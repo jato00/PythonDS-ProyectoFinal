@@ -2,7 +2,7 @@
 """
 Created on Thu Apr 18 19:14:09 2024
 
-@author: Jose Alonso
+@authores: Jose Alonso, Sandra Atencio
 """
 
 import streamlit as st
@@ -40,7 +40,7 @@ st.write("Primeros 5 registros:")
 st.write(df.head())
 
 
-
+###---------------------GRÁFICO 1-------------------------####
 if 'MAGNITUD' in df.columns:
        # Crear gráfico de líneas de la columna 'magnitud'
        st.write("Gráfico de Líneas de la columna 'magnitud':")
@@ -49,9 +49,9 @@ if 'MAGNITUD' in df.columns:
        ax.set_xlabel('Índice')
        ax.set_ylabel('Magnitud')
        st.pyplot(fig)
-else:
-       st.write("La columna 'magnitud' no está presente en el conjunto de datos.")
-#################################################################
+
+###---------------------GRÁFICO 2-------------------------####
+st.subheader("Frecuencia de Sismos agrupado por Magnitud")
  # Verificar si la columna 'magnitud' está presente en el DataFrame
 if 'MAGNITUD' in df.columns:
     # Crear histograma de la columna 'magnitud'
@@ -61,6 +61,16 @@ if 'MAGNITUD' in df.columns:
        ax.set_xlabel('Magnitud')
        ax.set_ylabel('Frecuencia')
        st.pyplot(fig)
+###-------------------
+st.subheader("Correlación entre Profundidad y Magnitud")
+if 'x' in df.columns and 'y' in df.columns:
+        # Crear gráfico de dispersión
+        st.write("Gráfico de Dispersión de las columnas 'x' y 'y':")
+        fig, ax = plt.subplots()
+        ax.scatter(df['PROFUNDIDAD'], df['MAGNITUD'], color='skyblue')
+        ax.set_xlabel('X')
+        ax.set_ylabel('Y')
+        st.pyplot(fig)
 ##################################################################
 # Obtener el valor mínimo y máximo de la columna datetime
 valor_minimo = df['FECHA_HORA_UTC'].min().to_pydatetime()
