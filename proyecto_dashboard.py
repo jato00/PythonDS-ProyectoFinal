@@ -8,6 +8,7 @@ Created on Thu Apr 18 19:14:09 2024
 import streamlit as st
 import pandas as pd
 import datetime
+import matplotlib.pyplot as plt
 
 
 st.title("Monitoreo de la actividad sísmica en el Perú ")
