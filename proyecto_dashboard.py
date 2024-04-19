@@ -35,14 +35,10 @@ def get_data(filename):
 
 df = get_data("Catalogo1960_2023.xlsx")
 
-# Mostrar los primeros 10 registros del DataFrame
+# Mostrar los primeros 5 registros del DataFrame
 st.write("Primeros 5 registros:")
 st.write(df.head())
 
-
-# Mostrar estadísticas descriptivas del DataFrame
-st.write("Estadísticas descriptivas de los valores numéricos:")
-st.write(df.describe())
 
 
 if 'MAGNITUD' in df.columns:
@@ -55,7 +51,17 @@ if 'MAGNITUD' in df.columns:
        st.pyplot(fig)
 else:
        st.write("La columna 'magnitud' no está presente en el conjunto de datos.")
-       
+#################################################################
+ # Verificar si la columna 'magnitud' está presente en el DataFrame
+if 'magnitud' in df.columns:
+    # Crear histograma de la columna 'magnitud'
+       st.write("Histograma de la columna 'magnitud':")
+       fig, ax = plt.subplots()
+       ax.hist(df['magnitud'], bins=20, color='skyblue', edgecolor='black')
+       ax.set_xlabel('Magnitud')
+       ax.set_ylabel('Frecuencia')
+       st.pyplot(fig)
+##################################################################
 # Obtener el valor mínimo y máximo de la columna datetime
 valor_minimo = df['FECHA_HORA_UTC'].min().to_pydatetime()
 valor_maximo = df['FECHA_HORA_UTC'].max().to_pydatetime()
