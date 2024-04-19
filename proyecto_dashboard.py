@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 st.title("Monitoreo de la actividad sísmica en el Perú ")
 
 @st.cache_data
-def get_data(filename)
+def get_data(filename):
     # Leer el archivo Excel en un DataFrame
     df = pd.read_excel(filename)
     
