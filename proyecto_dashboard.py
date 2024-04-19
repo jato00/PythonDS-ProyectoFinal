@@ -42,13 +42,14 @@ st.write(df.head())
 
 ###---------------------GRÁFICO 1-------------------------####
 if 'MAGNITUD' in df.columns:
-       # Crear gráfico de líneas de la columna 'magnitud'
-       st.write("Gráfico de Líneas de la columna 'magnitud':")
-       fig, ax = plt.subplots()
-       ax.plot(df['MAGNITUD'])
-       ax.set_xlabel('Índice')
-       ax.set_ylabel('Magnitud')
-       st.pyplot(fig)
+       # Crear gráfico de líneas de la columna 'MAGNITUD'
+        st.write("Gráfico de Líneas de la columna 'MAGNITUD':")
+        fig, ax = plt.subplots()
+        ax.plot(df['FECHA_HORA_UTC'], df['MAGNITUD'])
+        ax.set_xlabel('Fecha y Hora (UTC)')
+        ax.set_ylabel('Magnitud')
+        ax.tick_params(axis='x', rotation=45) 
+        st.pyplot(fig)
 
 ###---------------------GRÁFICO 2-------------------------####
 st.subheader("Frecuencia de Sismos agrupado por Magnitud")
@@ -61,8 +62,8 @@ if 'MAGNITUD' in df.columns:
        ax.set_xlabel('Magnitud')
        ax.set_ylabel('Frecuencia')
        st.pyplot(fig)
-###-------------------
-st.subheader("Correlación entre Profundidad y Magnitud")
+###----------------------GRÁFICO 3-------------------------####
+st.subheader("Gráfico de dispersión entre Profundidad y Magnitud")
 if 'PROFUNDIDAD' in df.columns and 'MAGNITUD' in df.columns:
         fig, ax = plt.subplots()
         ax.scatter(df['PROFUNDIDAD'], df['MAGNITUD'], color='skyblue')
