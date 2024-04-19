@@ -53,11 +53,11 @@ else:
        st.write("La columna 'magnitud' no está presente en el conjunto de datos.")
 #################################################################
  # Verificar si la columna 'magnitud' está presente en el DataFrame
-if 'magnitud' in df.columns:
+if 'MAGNITUD' in df.columns:
     # Crear histograma de la columna 'magnitud'
        st.write("Histograma de la columna 'magnitud':")
        fig, ax = plt.subplots()
-       ax.hist(df['magnitud'], bins=20, color='skyblue', edgecolor='black')
+       ax.hist(df['MAGNITUD'], bins=20, color='skyblue', edgecolor='black')
        ax.set_xlabel('Magnitud')
        ax.set_ylabel('Frecuencia')
        st.pyplot(fig)
