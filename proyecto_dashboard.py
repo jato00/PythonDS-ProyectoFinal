@@ -35,9 +35,6 @@ def get_data(filename):
 
 df = get_data("Catalogo1960_2023.xlsx")
 
-st.subheader("Data en estudio")
-st.write("Primeros 5 registros:")
-st.write(df.head())
 
 
 ###---------------------GRÁFICO 1-------------------------####
