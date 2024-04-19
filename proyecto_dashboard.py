@@ -63,13 +63,11 @@ if 'MAGNITUD' in df.columns:
        st.pyplot(fig)
 ###-------------------
 st.subheader("Correlación entre Profundidad y Magnitud")
-if 'x' in df.columns and 'y' in df.columns:
-        # Crear gráfico de dispersión
-        st.write("Gráfico de Dispersión de las columnas 'x' y 'y':")
+if 'PROFUNDIDAD' in df.columns and 'MAGNITUD' in df.columns:
         fig, ax = plt.subplots()
         ax.scatter(df['PROFUNDIDAD'], df['MAGNITUD'], color='skyblue')
-        ax.set_xlabel('X')
-        ax.set_ylabel('Y')
+        ax.set_xlabel('Profundidad')
+        ax.set_ylabel('Magnitud')
         st.pyplot(fig)
 ##################################################################
 # Obtener el valor mínimo y máximo de la columna datetime
