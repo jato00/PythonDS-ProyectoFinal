@@ -44,7 +44,6 @@ st.write(df.head())
 st.subheader("Magnitud por el tiempo de estudio")
 if 'MAGNITUD' in df.columns:
        # Crear gráfico de líneas de la columna 'MAGNITUD'
-        st.write("Gráfico de Líneas de la columna 'MAGNITUD':")
         fig, ax = plt.subplots()
         ax.plot(df['FECHA_HORA_UTC'], df['MAGNITUD'])
         ax.set_xlabel('Fecha y Hora (UTC)')
@@ -57,7 +56,6 @@ st.subheader("Frecuencia de Sismos agrupado por Magnitud durante el año 1960 - 
  # Verificar si la columna 'magnitud' está presente en el DataFrame
 if 'MAGNITUD' in df.columns:
     # Crear histograma de la columna 'magnitud'
-       st.write("Histograma de la columna 'magnitud':")
        fig, ax = plt.subplots()
        ax.hist(df['MAGNITUD'], bins=20, color='skyblue', edgecolor='black')
        ax.set_xlabel('Magnitud')
