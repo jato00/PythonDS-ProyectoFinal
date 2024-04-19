@@ -13,22 +13,27 @@ import matplotlib.pyplot as plt
 
 st.title("Monitoreo de la actividad sísmica en el Perú ")
 
+@st.cache_data
+def get_data(filename)
+    # Leer el archivo Excel en un DataFrame
+    df = pd.read_excel(filename)
+    
+    # Eliminar ID
+    df.drop('ID', axis = 1, inplace= True)
+    
+    # Crear columna DateTime FECHA_HORA_UTC
+    df['FECHA_HORA_UTC'] = df['FECHA_UTC'].astype(str) + df['HORA_UTC'].astype(str).str.zfill(6)
+    df['FECHA_HORA_UTC'] = pd.to_datetime(df['FECHA_HORA_UTC'], format='%Y%m%d%H%M%S')
+    
+    # Eliminar columnas FECHA_UTC y HORA_UTC
+    df.drop(['FECHA_UTC', 'HORA_UTC'], axis=1, inplace = True)
+    
+    # Crear columna DateTime FECHA_HORA_UTC
+    df['FECHA_CORTE'] = pd.to_datetime(df['FECHA_CORTE'].astype(str), format='%Y%d%m')
+    
+    return df
 
-# Leer el archivo Excel en un DataFrame
-df = pd.read_excel("Catalogo1960_2023.xlsx",)
-
-# Eliminar ID
-df.drop('ID', axis = 1, inplace= True)
-
-# Crear columna DateTime FECHA_HORA_UTC
-df['FECHA_HORA_UTC'] = df['FECHA_UTC'].astype(str) + df['HORA_UTC'].astype(str).str.zfill(6)
-df['FECHA_HORA_UTC'] = pd.to_datetime(df['FECHA_HORA_UTC'], format='%Y%m%d%H%M%S')
-
-# Eliminar columnas FECHA_UTC y HORA_UTC
-df.drop(['FECHA_UTC', 'HORA_UTC'], axis=1, inplace = True)
-
-# Crear columna DateTime FECHA_HORA_UTC
-df['FECHA_CORTE'] = pd.to_datetime(df['FECHA_CORTE'].astype(str), format='%Y%d%m')
+df = get_data("Catalogo1960_2023.xlsx")
 
 # Mostrar los primeros 10 registros del DataFrame
 st.write("Primeros 5 registros:")
