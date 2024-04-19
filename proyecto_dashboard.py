@@ -35,12 +35,13 @@ def get_data(filename):
 
 df = get_data("Catalogo1960_2023.xlsx")
 
-# Mostrar los primeros 5 registros del DataFrame
+st.subheader("Data en estudio")
 st.write("Primeros 5 registros:")
 st.write(df.head())
 
 
 ###---------------------GRÁFICO 1-------------------------####
+st.subheader("Magnitud por el tiempo de estudio")
 if 'MAGNITUD' in df.columns:
        # Crear gráfico de líneas de la columna 'MAGNITUD'
         st.write("Gráfico de Líneas de la columna 'MAGNITUD':")
@@ -52,7 +53,7 @@ if 'MAGNITUD' in df.columns:
         st.pyplot(fig)
 
 ###---------------------GRÁFICO 2-------------------------####
-st.subheader("Frecuencia de Sismos agrupado por Magnitud")
+st.subheader("Frecuencia de Sismos agrupado por Magnitud durante el año 1960 - 2023")
  # Verificar si la columna 'magnitud' está presente en el DataFrame
 if 'MAGNITUD' in df.columns:
     # Crear histograma de la columna 'magnitud'
@@ -70,7 +71,8 @@ if 'PROFUNDIDAD' in df.columns and 'MAGNITUD' in df.columns:
         ax.set_xlabel('Profundidad')
         ax.set_ylabel('Magnitud')
         st.pyplot(fig)
-##################################################################
+
+###----------------------GRÁFICO 4-------------------------####
 # Obtener el valor mínimo y máximo de la columna datetime
 valor_minimo = df['FECHA_HORA_UTC'].min().to_pydatetime()
 valor_maximo = df['FECHA_HORA_UTC'].max().to_pydatetime()
@@ -92,6 +94,7 @@ df_filtrado = df[(df['FECHA_HORA_UTC'] >= pd.Timestamp(range_dates[0])) & (df['F
 df_filtrado = df_filtrado.loc[df['MAGNITUD']>=6.1]
 st.map(df_filtrado,latitude='LATITUD',longitude='LONGITUD')
 
+###----------------------GRÁFICO 5-------------------------####
 # Seleccionar el rango de fechas a visualizar
 st.subheader("Sismos ocurridos por año")
 valor_maximo = df['FECHA_HORA_UTC'].max().to_pydatetime()
